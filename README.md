@@ -62,9 +62,11 @@ com.example.appfinanceiro/
 
 ## 📸 Screenshots
 
-![Tela de Introdução](IntroScreen.png)
-![Dashboard](MainScreen.png)
-![Relatório](ReportScreen.png)
+<p align="center">
+  <img src="IntroScreen.png" width="260" alt="Tela de Introdução" />
+  <img src="MainScreen.png" width="260" alt="Dashboard Principal" />
+  <img src="ReportScreen.png" width="260" alt="Relatório Mensal" />
+</p>
 
 ## 🚀 Como Executar o Projeto
 
