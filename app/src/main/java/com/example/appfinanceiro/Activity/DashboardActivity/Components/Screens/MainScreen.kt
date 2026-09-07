@@ -1,0 +1,84 @@
+package com.example.appfinanceiro.Activity.DashboardActivity.Screens
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.material3.Text
+import androidx.compose.foundation.clickable
+import com.example.appfinanceiro.Activity.DashboardActivity.Components.Components.ActionButtonRow
+import com.example.appfinanceiro.Activity.DashboardActivity.Components.Components.BottomNavigationBar
+import com.example.appfinanceiro.Activity.DashboardActivity.Components.Components.CardSection
+import com.example.appfinanceiro.Activity.DashboardActivity.Components.Components.ExpenseItem
+import com.example.appfinanceiro.Activity.DashboardActivity.Components.Components.HeaderSection
+import com.example.appfinanceiro.Domain.ExpenseDomain
+import com.example.appfinanceiro.R
+
+
+@Composable
+fun MainScreen(
+    onCardClick: () -> Unit = {},
+            expenses: List<ExpenseDomain>
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.White)
+    ) {
+        // Debug: quick button to trigger report navigation (tap to test)
+        Text(
+            text = "GoReport",
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(12.dp)
+                .clickable { onCardClick() }
+        )
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 70.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+
+            item { HeaderSection() }
+            item { CardSection (onCardClick) }
+            item { ActionButtonRow() }
+
+            items(expenses) {item -> ExpenseItem(item) }
+        }
+
+        BottomNavigationBar(
+            modifier = Modifier
+                .align (Alignment.BottomCenter)
+                .height(80.dp),
+            onItemSelected = { itemId ->
+                if (itemId == R.id.wallet) {
+
+                }
+            }
+        )
+    }
+}
+
+
+@Composable
+@Preview(showBackground = true)
+fun MainScreenPreview() {
+    val expenses = listOf(
+        ExpenseDomain("Restaurante", 573.12, "resturant", "17 aug 2026 19:15"),
+        ExpenseDomain("McDonald's", 77.82, "mcdonald", "16 aug 2026 13:57"),
+        ExpenseDomain("Cinema", 23.47, "cinema", "16 aug 2026 20:45"),
+        ExpenseDomain("Restaurante", 573.12, "resturant", "15 aug 2025 22:18")
+    )
+    MainScreen(expenses = expenses)
+}

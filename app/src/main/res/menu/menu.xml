@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/wallet" android:title="Carteira"/>
+    <item android:id="@+id/market" android:title="Mercado"/>
+    <item android:id="@+id/trade" android:title="Negociar"/>
+    <item android:id="@+id/futures" android:title="Futuros"/>
+    <item android:id="@+id/profile" android:title="Perfil"/>
+</menu>
